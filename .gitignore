@@ -25,3 +25,19 @@ build/Release
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
+
+.idea
+logs
+results
+public/build
+npm-debug.log
+.bower-cache
+.bower-registry
+.bower-tmp
+*.map
+--no-cache
+config.json
+.Ds_Store
+.sass-cache
+config.json
+public/less/config.less

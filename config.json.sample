@@ -1,0 +1,10 @@
+{
+  "NODE_PORT": 3000,
+  "NODE_ENV": "development",
+  "API_ENDPOINT": "127.0.0.1",
+  "NODE_PROXY": true,
+  "PROXY_PATH": "/api-proxy",
+  "PROXY_PROTOCOL": "http:",
+  "STATIC_ENDPOINT": "",
+  "ADMIN_NODE_PORT": 3001
+}
