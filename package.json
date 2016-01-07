@@ -2,7 +2,7 @@
   "name": "node-web-kit",
   "version": "0.0.1",
   "description": "Node web starter kit for quick development",
-  "main": "bin/www",
+  "main": "app.js",
   "scripts": {
     "start": "node ./bin/www",
     "prod": "sh app.sh",
