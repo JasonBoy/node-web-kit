@@ -41,7 +41,7 @@ All the config can also be set in your environment variable, which has higher pr
    
 ###Production mode
 
-Just run the "npm run prod ..." to simply start/reload the node server with PM2,
+Just run the "npm run prod ..." to simply start/reload the node server with PM2,  
 `> npm run prod -- moduleName instanceNumber start(only when moduleName is "all")`  
 default moduleName is "app", also there is "admin"(B side)  
 start/reload is only used when moduleName is "all", which will start all apps  
