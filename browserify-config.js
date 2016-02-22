@@ -8,5 +8,4 @@
  *  {{jquery: {exclude: boolean}}}
  */
 module.exports = {
-  jquery: {}
 };
