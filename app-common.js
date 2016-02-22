@@ -1,5 +1,5 @@
 /**
- * Created by jason on 12/15/15.
+ * App common stuff
  */
 
 var express = require('express');

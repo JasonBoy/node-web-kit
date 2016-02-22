@@ -34,7 +34,6 @@ All the config can also be set in your environment variable, which has higher pr
   "PROXY_PATH": "/api-proxy", //api proxy prefix, '/api/login' --> '/api-proxy/api/login' in your browser
   "PROXY_PROTOCOL": "http:",  //http/https
   "STATIC_ENDPOINT": "", //host for static assets, need other coding
-  "ADMIN_NODE_PORT": 3001 //server port for your admin app, if you have one
 }
 
 ```

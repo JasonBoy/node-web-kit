@@ -26,9 +26,6 @@ module.exports = {
   getListeningPort: function() {
     return getConfigProperty('NODE_PORT');
   },
-  getAdminListeningPort: function() {
-    return getConfigProperty('ADMIN_NODE_PORT');
-  },
   getNodeEnv: function() {
     return getConfigProperty('NODE_ENV');
   },

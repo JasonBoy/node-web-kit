@@ -1,10 +1,9 @@
 #!/bin/sh
 #Create by Jason <jasonlikenfs@gmail.com>
 # > ./app.sh moduleName clusterNumber
-BModuleName="admin"
-CModuleName="app"
+ModuleName="app"
 AllModules="all"
-AppName=${CModuleName}
+AppName=${ModuleName}
 #Get/Set module name from argv
 if [[ $# != 0 && $1 != "" ]]; then
   AppName=$1
@@ -49,7 +48,6 @@ echo running gulp tasks...
 gulp
 
 ClientScript="./bin/www"
-#AdminScript="./bin/www-admin"
 #For just make it to ClientScript
 AllModuleScript=${ClientScript}
 RunScript=${ClientScript}
@@ -60,8 +58,7 @@ fi
 #start or reload all apps
 if [[ ${AppName} == ${AllModules} ]]; then
   if [[ "start" == $3 ]]; then
-    pm2 start ${ClientScript} --name ${CModuleName} -i ${ClusterNumber}
-    #pm2 start ${AdminScript} --name ${BModuleName} -i ${ClusterNumber}
+    pm2 start ${ClientScript} --no-vizion --name ${ModuleName} -i ${ClusterNumber}
   else
     pm2 reload all
   fi
@@ -70,9 +67,6 @@ fi
 
 #check if app is running
 AppStatus=$(pm2 show "$AppName" | grep -o "$AppName")
-#if [[ ${AppName} == ${BModuleName} ]]; then
-#	RunScript=${AdminScript}
-#fi
 echo using ${RunScript}
 
 if [[ ${AppStatus} != "" ]]; then
@@ -80,6 +74,6 @@ if [[ ${AppStatus} != "" ]]; then
   pm2 reload ${AppName}
 else
   echo ${AppName} is not running, starting ${AppName}
-  pm2 start ${RunScript} --name ${AppName} -i ${ClusterNumber}
+  pm2 start ${RunScript} --no-vizion --name ${AppName} -i ${ClusterNumber}
 fi
 
