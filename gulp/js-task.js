@@ -9,7 +9,7 @@ var gulp = require('gulp')
   , buffer = require('vinyl-buffer')
   , watchify = require('watchify')
   , glob = require('glob')
-  , _ = require('underscore')
+  , _ = require('lodash')
   , rev = require('gulp-rev')
   ;
 var myConfig = require('../config');

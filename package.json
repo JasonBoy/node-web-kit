@@ -35,11 +35,11 @@
     "express-http-proxy": "^0.6.0",
     "express-session": "^1.11.3",
     "jquery": "^2.1.4",
+    "lodash": "^4.5.0",
     "morgan": "~1.6.1",
     "request": "^2.67.0",
     "serve-favicon": "~2.3.0",
     "swig": "~1.4.2",
-    "underscore": "^1.8.3",
     "winston": "^2.1.1"
   },
   "devDependencies": {
