@@ -6,22 +6,22 @@ var ROOT_PATH = path.resolve(process.cwd());
 var APP_PATH = path.resolve(ROOT_PATH, 'public/js');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'public/build');
 var TEM_PATH = path.resolve(ROOT_PATH, 'templates');
-var BOWER_PATH = path.resolve(ROOT_PATH, 'bower_components');
+var BOWER_PATH = path.resolve(ROOT_PATH, 'public/lib');
 
 module.exports = {
   entry: {
-    "bundle": path.resolve(APP_PATH, 'index.js'),
-    "bundle.lib": path.resolve(APP_PATH, 'lib.js')
+    "bundle": path.resolve(APP_PATH, 'app.js'),
+    "vendors": ['jquery', 'angular', 'swiper']
   },
   output: {
     path: path.join(BUILD_PATH, 'js'),
     filename: '[name].js'
   },
-  // resolve: {
-  //   alias: {
-  //     lodash: path.resolve(BOWER_PATH, 'lodash/lodash.js')
-  //   }
-  // },
+  resolve: {
+    alias: {
+      swiper: path.resolve(BOWER_PATH, 'Swiper/dist/js/swiper.min.js')
+    }
+  },
   //enable dev source map
   // devtool: 'eval-source-map',
   //enable dev server
@@ -60,7 +60,7 @@ module.exports = {
       // }
     ]
   }
-  // ,
+  ,
   
 
   //custom jshint options
@@ -68,6 +68,9 @@ module.exports = {
   // jshint: {
   //   "esnext": true
   // },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin("vendors", "bundle.lib.js")
+  ]
 
   /*plugins: [
     new HtmlwebpackPlugin({
