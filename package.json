@@ -40,9 +40,11 @@
     "winston": "^2.1.1"
   },
   "devDependencies": {
+    "angular": "^1.5.3",
     "browserify": "^12.0.1",
     "browserify-shim": "^3.8.11",
     "bundle-collapser": "^1.2.1",
+    "del": "^1.1.1",
     "glob": "^6.0.1",
     "gulp": "~3.9.0",
     "gulp-concat": "^2.5.2",
@@ -57,11 +59,12 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.3",
+    "jquery": "^2.2.2",
     "request-debug": "^0.2.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-paths": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.6.0",
-    "del": "^1.1.1"
+    "webpack": "^1.12.14"
   }
 }
