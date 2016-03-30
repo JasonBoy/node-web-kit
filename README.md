@@ -11,7 +11,7 @@ and more will be added...
 ```
 npm install node-web-kit
 cd node-web-kit
-npm install`  
+npm install  
 gulp dev //for the first time 
 
 ```
