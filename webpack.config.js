@@ -69,7 +69,16 @@ module.exports = {
   //   "esnext": true
   // },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin("vendors", "bundle.lib.js")
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendors',
+      filename: 'bundle.lib.js'
+    })
+    // ,
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     warnings: false
+    //   }
+    // })
   ]
 
   /*plugins: [
