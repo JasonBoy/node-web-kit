@@ -1,3 +1,7 @@
+//load less
+// require('../less/index.less');
+
+
 var angular = require('angular');
 var utils = require('./utils');
 
