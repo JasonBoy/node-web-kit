@@ -1,4 +1,6 @@
 # node-web-kit
+NOTICE: **_I am adding webpack into the project_**
+
 Node web starter kit for quick development,   
 which uses express as router,   
 and gulp as streaming build tool,  
