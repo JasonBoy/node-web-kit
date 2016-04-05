@@ -1,7 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-// var HtmlwebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ManifestPlugin = require('webpack-manifest-plugin');
+var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 
 var ROOT_PATH = path.resolve(process.cwd());
 var APP_PATH = path.resolve(ROOT_PATH, 'public');
@@ -16,8 +18,9 @@ module.exports = {
     "style": path.resolve(APP_PATH, 'js/less.js')
   },
   output: {
-    path: path.join(BUILD_PATH, 'js'),
-    filename: '[name].js'
+    // path: path.join(BUILD_PATH, 'js'),
+    path: BUILD_PATH,
+    filename: '[name]-[chunkhash:8].js'
     // ,
     // chunkFilename: '[id].js'
   },
@@ -65,17 +68,28 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendors',
-      filename: 'bundle.lib.js',
+      filename: 'bundle-[chunkhash:8].lib.js',
       minChunks: 'Infinity' //don't add common app less into this file
     })
     //extract css into separate files, works with the loads above
     ,
-    new ExtractTextPlugin("../css/[name].css")
+    new ExtractTextPlugin("[name]-[chunkhash:8].css")
+    ,new HtmlWebpackPlugin()
     // ,
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: {
     //     warnings: false
     //   }
+    // })
+    // ,
+    // new ManifestPlugin({
+    //   fileName: 'rev-manifest.json',
+    //   basePath: BUILD_PATH
+    // })
+    // ,
+    // new ChunkManifestPlugin({
+    //   filename: "rev-manifest.json",
+    //   manifestVariable: "webpackManifest"
     // })
   ]
 };
