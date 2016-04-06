@@ -39,5 +39,5 @@ npm-debug.log
 config.json
 .Ds_Store
 .sass-cache
-config.json
 public/less/config.less
+build

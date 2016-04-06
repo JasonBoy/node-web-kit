@@ -29,8 +29,8 @@ gulp.task('init', ['css', 'js', 'js.lib'], function () {
   });
 });
 //should for prod
-gulp.task('assets', ['css', 'js', 'js.lib', 'img'], function () {
-  gulp.start('revision');
+gulp.task('assets', ['css', 'js', 'js.lib', 'img', 'html'], function () {
+  gulp.start('rev');
 });
 // Default task
 gulp.task('default', ['clean'], function () {

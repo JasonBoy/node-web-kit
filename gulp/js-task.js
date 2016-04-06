@@ -11,27 +11,12 @@ var gulp = require('gulp')
   , glob = require('glob')
   , _ = require('lodash')
   , rev = require('gulp-rev')
+  , Promise = require("bluebird")
   ;
 var myConfig = require('../config');
 var libs = require('../browserify-config');
 var DEV_MODE = myConfig.isDevMode();
 
-var baseScriptPath = 'public/js/';
-
-var buildPath = 'public/build/js/';
-var compileSrc = [
-  baseScriptPath + '**/*.js',
-  '!' + baseScriptPath + 'lib/**/*'
-];
-gulp.task("js.simple", function () {
-  //save minified js separately, for excluded js
-  return gulp.src(compileSrc)
-    .pipe(uglify())
-    .pipe(gulp.dest(buildPath))
-    ;
-});
-
-//=====BROWSERIFY TASKS=======
 var baseDir = '';
 var libNames = [];
 for (var key in libs) {
@@ -39,7 +24,6 @@ for (var key in libs) {
     libs[key].exclude || libNames.push(libs[key].url ? libs[key].url : key);
   }
 }
-//console.log(simpleLibs, libNames);
 //task for bundling app related js
 var browserifyAppDefaultConfig = {
   cache: {},
@@ -49,7 +33,7 @@ var browserifyAppDefaultConfig = {
   fullPaths: false
 };
 var browserifyObj = {};
-function bundleAppJs(customObj, customLibConfig, destFile) {
+function bundleAppJs(customObj, customLibConfig, destFile, resolve) {
   var b = customObj ? customObj : browserifyObj;
   var libs = customLibConfig ? customLibConfig : libNames;
   b = b.external(libs);
@@ -66,19 +50,20 @@ function bundleAppJs(customObj, customLibConfig, destFile) {
         drop_debugger: true
       }
     })))
-    //.pipe(rev())
-    //.pipe(gulp.dest('./public/build/js'))
-    //.pipe(rev.manifest({merge: true}))
-    .pipe(gulp.dest('./public/build/js'));
+    .pipe(gulp.dest('./public/build/js'))
+    .on('end', function() {
+      resolve && resolve(true);
+    });
 }
 var jsEntry = './public/js/**/*.js';
 //add multiple entries at once
 gulp.task('js', ['preTask'], function () {
-  //test paths
-  glob(jsEntry, function (err, files) {
-    //console.log(files);
-    browserifyObj = browserify(_.extend(browserifyAppDefaultConfig, {entries: files}));
-    bundleAppJs();
+  return new Promise(function (resolve) {
+    glob(jsEntry, function (err, files) {
+      //console.log(files);
+      browserifyObj = browserify(_.extend(browserifyAppDefaultConfig, {entries: files}));
+      bundleAppJs(browserifyObj, null, null, resolve);
+    });
   });
 });
 
@@ -100,8 +85,8 @@ function runWatchTask(entry, bootstrapFile, customLibs, destFile) {
 gulp.task('js.watch', function () {
   runWatchTask(jsEntry, './public/js/bootstrap.js', libNames, 'bundle.js');
 });
-//task for bundling vender js
-function bundleLibJs(customLibs, destFile) {
+//task for bundling vendor js
+function bundleLibJs(customLibs, destFile, resolve) {
   return browserify({
     debug: DEV_MODE
   })
@@ -112,9 +97,14 @@ function bundleLibJs(customLibs, destFile) {
     .pipe(gulpif(!DEV_MODE, buffer()))
     .pipe(gulpif(!DEV_MODE, uglify()))
     // Start piping stream to tasks!
-    .pipe(gulp.dest('./public/build/js'));
+    .pipe(gulp.dest('./public/build/js'))
+    .on('end', function() {
+      resolve && resolve(true);
+    });
 }
 gulp.task('js.lib', ['preTask'], function () {
-  return bundleLibJs();
+  return new Promise(function (resolve) {
+    bundleLibJs(null, null, resolve);
+  });
 });
 
