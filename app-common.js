@@ -30,7 +30,7 @@ function init(moduleName, moduleLogger) {
     varControls: ['{=', '=}'],
     cache: appConfig.isDevMode() ? false : 'memory'
   });
-  app.set('views', path.join(__dirname, 'views'));
+  app.set('views', path.join(__dirname, appConfig.isDevMode() ? 'views' : 'build/views'));
   // view engine setup
   app.engine('html', swig.renderFile);
   app.set('view engine', 'html');
