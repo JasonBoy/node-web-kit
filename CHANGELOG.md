@@ -1,4 +1,8 @@
 
+### 0.0.11
+
+- #3 using minified html in prod mode
+
 ### 0.0.10
 
 - add img url revision in css and html
