@@ -1,6 +1,6 @@
 {
   "name": "node-web-kit",
-  "version": "0.0.5",
+  "version": "0.0.10",
   "description": "Node web starter kit for quick development",
   "main": "app.js",
   "scripts": {
@@ -16,7 +16,8 @@
     "node",
     "web",
     "kit",
-    "express"
+    "express",
+    "gulp"
   ],
   "author": "Jason Jiang <jasonlikenfs@gmail.com>",
   "license": "MIT",
@@ -52,7 +53,6 @@
     "gulp-imagemin": "^2.4.0",
     "gulp-less": "^3.0.3",
     "gulp-minify-css": "^1.1.1",
-    "gulp-nodemon": "^2.0.3",
     "gulp-notify": "^2.2.0",
     "gulp-rename": "~1.2.2",
     "gulp-rev": "^6.0.1",
