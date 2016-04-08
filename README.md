@@ -4,7 +4,7 @@ NOTICE: **_I am adding webpack into the project_**
 Node web starter kit for quick development,   
 which uses express as router,   
 and gulp as streaming build tool,  
-and less for css,  
+and less/sass for css, the `css` task is for less, change it to `scss` for scss files in related gulp files,    
 browserify to building js,
 also supports proxy for your app's restful api  with the help of `request` module,  
 and more will be added...

@@ -1,0 +1,10 @@
+@import "common";
+@import "home";
+
+$brand-primary: red;
+
+p {
+  color: $brand-primary;
+  font-size: $font-size-sm;
+  background-color: $color-1;
+}
