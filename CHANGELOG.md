@@ -1,3 +1,6 @@
+### 0.0.12
+
+- [#4](https://github.com/JasonBoy/node-web-kit/issues/4) hotfix for swig tag error in layout.html
 
 ### 0.0.11
 
