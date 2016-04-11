@@ -19,7 +19,7 @@
   {% endif %}
 
 </head>
-<body class="{% if pageStyle %}{= pageStyle =}{= endif =}">
+<body class="{% if pageStyle %}{= pageStyle =}{% endif %}">
 
   <!--content-->
   {% block content %}{% endblock %}
