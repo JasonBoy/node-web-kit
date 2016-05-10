@@ -1,7 +1,7 @@
 var gulp = require('gulp')
   , gutil = require('gulp-util')
   , sass = require('gulp-sass')
-  , minifycss = require('gulp-minify-css')
+  , minifycss = require('gulp-clean-css')
   , gulpif = require('gulp-if')
   , sourcemaps = require('gulp-sourcemaps')
   ;
@@ -16,7 +16,9 @@ gulp.task('scss', ['preTask'], function () {
     .pipe(sass().on('error', sass.logError))
     .pipe(gulpif(DEV_MODE, sourcemaps.write('./maps')))
     .on('error', gutil.log)
-    .pipe(gulpif(!DEV_MODE, minifycss()))
+    .pipe(gulpif(!DEV_MODE, minifycss({
+      keepSpecialComments: 1
+    })))
     .pipe(gulp.dest(cp))
     ;
 });
