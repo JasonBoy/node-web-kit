@@ -9,7 +9,7 @@ var gulp = require('gulp')
 var myConfig = require('../config');
 var DEV_MODE = myConfig.isDevMode();
 
-gulp.task('css', ['preTask'], function () {
+gulp.task('less', ['preTask'], function () {
   var cp = 'public/build/css';
   return gulp.src(['public/less/**/*.less'])
     .pipe(gulpif(DEV_MODE, sourcemaps.init()))
@@ -22,10 +22,10 @@ gulp.task('css', ['preTask'], function () {
     .pipe(gulp.dest(cp))
     ;
 });
-gulp.task('css.watch', ['css'], function () {
-  gulp.watch('./public/less/**/*.less', ['css'])
+gulp.task('less.watch', ['css'], function () {
+  gulp.watch('./public/less/**/*.less', ['less'])
     .on('change', function(event) {
-      gutil.log(event.path + ' changed, running css task...');
+      gutil.log(event.path + ' changed, running less task...');
     });
   gutil.log('Starting watching less files...');
 });

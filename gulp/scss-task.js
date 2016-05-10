@@ -9,7 +9,7 @@ var gulp = require('gulp')
 var myConfig = require('../config');
 var DEV_MODE = myConfig.isDevMode();
 
-gulp.task('scss', ['preTask'], function () {
+gulp.task('css', ['preTask'], function () {
   var cp = 'public/build/css';
   return gulp.src(['public/scss/**/*.scss'])
     .pipe(gulpif(DEV_MODE, sourcemaps.init()))
@@ -22,7 +22,7 @@ gulp.task('scss', ['preTask'], function () {
     .pipe(gulp.dest(cp))
     ;
 });
-gulp.task('scss.watch', ['scss'], function () {
+gulp.task('css.watch', ['scss'], function () {
   gulp.watch('./public/scss/**/*.scss', ['scss'])
     .on('change', function(event) {
       gutil.log(event.path + ' changed, running scss task...');
