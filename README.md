@@ -3,10 +3,13 @@
 Node web starter kit for quick development,   
 which uses express as router,   
 and gulp as streaming build tool,  
-and less/sass for css, the `css` task is for less, change it to `scss` for scss files in related gulp files,    
+and less/sass for css, __the `css` task is for `scss` now__, change it to `less` for less files in related gulp files,    
 browserify to building js,
 also supports proxy for your app's restful api  with the help of `request` module,  
 and more will be added...
+
+__Template engine has changed to [nunjucks](https://github.com/mozilla/nunjucks)__,   
+the `swig` template is no longer maintained
 
 ###Usage
 ```
@@ -56,4 +59,4 @@ start/reload is only used when moduleName is "all", which will start all apps
 `npm run prod -- all`, which will reload all apps,  
 actually it just executes the `app.sh` file
 or
-create your own script if needed, but should follow the steps inside the app.sh
+create your own script if needed

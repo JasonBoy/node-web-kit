@@ -1,3 +1,9 @@
+### 2.0.0
+
+- replace gulp-minify-css with gulp-clean-css
+- replace swig with nunjucks
+- using sass by default
+
 ### 0.0.12
 
 - [#4](https://github.com/JasonBoy/node-web-kit/issues/4) hotfix for swig tag error in layout.html
