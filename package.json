@@ -1,6 +1,6 @@
 {
   "name": "node-web-kit",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "description": "Node web starter kit for quick development",
   "main": "app.js",
   "scripts": {
@@ -36,9 +36,9 @@
     "express-session": "^1.11.3",
     "lodash": "^4.5.0",
     "morgan": "~1.6.1",
+    "nunjucks": "^2.4.2",
     "request": "^2.67.0",
     "serve-favicon": "~2.3.0",
-    "swig": "~1.4.2",
     "winston": "^2.1.1"
   },
   "devDependencies": {

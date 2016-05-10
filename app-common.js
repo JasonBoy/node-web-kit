@@ -6,7 +6,7 @@ var express = require('express');
 var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
-var swig = require('swig');
+var nunjucks = require('nunjucks');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var compression = require('compression');
@@ -26,13 +26,14 @@ function init(moduleName, moduleLogger) {
   app.set('proxyEnabled', appConfig.isNodeProxyEnabled());
   app.set('proxyPath', appConfig.getProxyPath());
 
-  swig.setDefaults({
-    varControls: ['{=', '=}'],
-    cache: appConfig.isDevMode() ? false : 'memory'
+  var viewsPath = appConfig.isDevMode() ? 'views' : 'build/views';
+
+  nunjucks.configure(viewsPath, {
+    autoescape: true,
+    express: app,
+    noCache: appConfig.isDevMode()
   });
-  app.set('views', path.join(__dirname, appConfig.isDevMode() ? 'views' : 'build/views'));
-  // view engine setup
-  app.engine('html', swig.renderFile);
+
   app.set('view engine', 'html');
 
   app.use(require('./mw/logger').httpLogger);
