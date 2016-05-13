@@ -53,7 +53,7 @@ Just run the `npm run prod ...` to simply start/reload the node server with PM2,
 default moduleName is "app"  
 start/reload is only used when moduleName is "all", which will start all apps  
 `npm run prod`, which will start/reload app in maximum instances(cpu cores), default instance name is `app`   
-`npm run prod -- app 2`, which will start/reload admin app with 2 instances enabled    
+`npm run prod -- app 2`, which will start/reload app with 2 instances enabled    
 `npm run prod -- all 0 start`, which will start all apps with maximum(0 == maximum) instances,  
  "start" is only for the first time
 `npm run prod -- all`, which will reload all apps,  
