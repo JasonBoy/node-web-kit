@@ -1,3 +1,8 @@
+### 2.1.0
+
+- gulp less/scss task typo fix, causing the gulp task to fail :(
+- add consolidate.js to support multiple template engines
+
 ### 2.0.0
 
 - replace gulp-minify-css with gulp-clean-css

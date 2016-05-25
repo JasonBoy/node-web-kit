@@ -8,9 +8,6 @@ browserify to building js,
 also supports proxy for your app's restful api  with the help of `request` module,  
 and more will be added...
 
-__Template engine has changed to [nunjucks](https://github.com/mozilla/nunjucks)__,   
-the `swig` template is no longer maintained
-
 ###Usage
 ```
 npm install node-web-kit
@@ -45,6 +42,11 @@ All the config can also be set in your environment variable, which has higher pr
 }
 
 ```
+
+
+### Template Engines
+__Default template engine is [nunjucks](https://github.com/mozilla/nunjucks)__,   
+Since we are using the [consolidate.js](https://github.com/tj/consolidate.js), you can use any template engine you want.
    
 ###Production mode
 
