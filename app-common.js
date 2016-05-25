@@ -7,6 +7,7 @@ var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var nunjucks = require('nunjucks');
+var cons = require('consolidate');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var compression = require('compression');
@@ -28,13 +29,13 @@ function init(moduleName, moduleLogger) {
 
   var viewsPath = appConfig.isDevMode() ? 'views' : 'build/views';
 
-  nunjucks.configure(viewsPath, {
+  //TODO: Change the code here if you want to use other extensions and template engines
+  app.set('view engine', 'html');
+  cons.requires.nunjucks = nunjucks.configure(viewsPath, {
     autoescape: true,
     express: app,
     noCache: appConfig.isDevMode()
   });
-
-  app.set('view engine', 'html');
 
   app.use(require('./mw/logger').httpLogger);
   //nginx may do this
