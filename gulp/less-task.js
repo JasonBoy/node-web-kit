@@ -22,7 +22,7 @@ gulp.task('less', ['preTask'], function () {
     .pipe(gulp.dest(cp))
     ;
 });
-gulp.task('less.watch', ['css'], function () {
+gulp.task('less.watch', ['less'], function () {
   gulp.watch('./public/less/**/*.less', ['less'])
     .on('change', function(event) {
       gutil.log(event.path + ' changed, running less task...');

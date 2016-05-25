@@ -22,10 +22,10 @@ gulp.task('css', ['preTask'], function () {
     .pipe(gulp.dest(cp))
     ;
 });
-gulp.task('css.watch', ['scss'], function () {
-  gulp.watch('./public/scss/**/*.scss', ['scss'])
+gulp.task('css.watch', ['css'], function () {
+  gulp.watch('./public/scss/**/*.scss', ['css'])
     .on('change', function(event) {
-      gutil.log(event.path + ' changed, running scss task...');
+      gutil.log(event.path + ' changed, running css task...');
     });
   gutil.log('Starting watching scss files...');
 });
