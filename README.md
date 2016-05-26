@@ -48,7 +48,7 @@ All the config can also be set in your environment variable, which has higher pr
 __Default template engine is [nunjucks](https://github.com/mozilla/nunjucks)__,   
 Since we are using the [consolidate.js](https://github.com/tj/consolidate.js), you can use any template engine you want.
    
-###Production mode
+###Production Mode
 
 __Make sure you set the `NODE_ENV=production` or set `NODE_ENV` to `prod` or `production` in `config.json`__  
 And just run the `npm run prod ...` to simply start/reload the node server with PM2,  

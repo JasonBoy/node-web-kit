@@ -1,6 +1,7 @@
 #!/bin/sh
 #Create by Jason <jasonlikenfs@gmail.com>
-# > ./app.sh moduleName clusterNumber
+#This is meant for production
+# > ./deploy.sh moduleName clusterNumber
 ModuleName="app"
 AllModules="all"
 AppName=${ModuleName}
@@ -10,7 +11,6 @@ if [[ $# != 0 && $1 != "" ]]; then
 fi
 #echo ${AppName} $#
 #Simple script to run app quickly
-#This is meant for production
 NodeVersion=$(node -v)
 if [[ $? != 0 ]]; then
 	#nodejs not installed yet
@@ -20,17 +20,18 @@ else
   echo node/${NodeVersion}, npm/$(npm -v)
 fi
 
-GulpVersion=$(gulp -v)
-if [[ $? != 0 ]]; then
-	echo ERROR: pls install gulp to continue.[sudo npm install -g gulp]
-	exit
-fi
+#GulpVersion=$(gulp -v)
+#if [[ $? != 0 ]]; then
+#	echo ERROR: pls install gulp to continue.[sudo npm install -g gulp]
+#	exit
+#fi
 PMVersion=$(pm2 -v)
 if [[ $? != 0 ]]; then
 	echo ERROR: pls install pm2 to continue.[sudo npm install -g pm2]
 	exit
 fi
 
+##uncoment this if you are in China...
 #TaobaoRegistry="http://registry.npm.taobao.org/"
 #NpmRegistry=$(npm config get registry)
 #npm config set registry $TaobaoRegistry
@@ -45,7 +46,7 @@ npm install
 
 #running gulp tasks
 echo running gulp tasks...
-gulp
+npm run build
 
 ClientScript="./bin/www"
 #For just make it to ClientScript
