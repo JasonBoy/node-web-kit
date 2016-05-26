@@ -50,7 +50,8 @@ Since we are using the [consolidate.js](https://github.com/tj/consolidate.js), y
    
 ###Production mode
 
-Just run the `npm run prod ...` to simply start/reload the node server with PM2,  
+__Make sure you set the `NODE_ENV=production` or set `NODE_ENV` to `prod` or `production` in `config.json`__  
+And just run the `npm run prod ...` to simply start/reload the node server with PM2,  
 `npm run prod -- moduleName instanceNumber start` ('start' needed only when moduleName is "all")  
 default moduleName is "app"  
 start/reload is only used when moduleName is "all", which will start all apps  
