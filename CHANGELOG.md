@@ -1,3 +1,7 @@
+### 2.1.1
+
+- move all dist assets to `build` dir instead of putting the static assets in `public/build`
+
 ### 2.1.0
 
 - gulp less/scss task typo fix, causing the gulp task to fail :(
