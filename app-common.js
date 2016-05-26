@@ -42,7 +42,7 @@ function init(moduleName, moduleLogger) {
   app.use(compression({}));
   // uncomment after placing your favicon in /public
   app.use(favicon(path.join(__dirname, 'public', 'img/favicon.ico')));
-  app.use('/public', express.static(path.join(__dirname, 'public/build'), {maxAge: appConfig.isDevMode() ? 0 : 2592000000}));
+  app.use('/public', express.static(path.join(__dirname, 'build/content'), {maxAge: appConfig.isDevMode() ? 0 : 2592000000}));
   app.use('/public', express.static(path.join(__dirname, 'public'), {maxAge: appConfig.isDevMode() ? 0 : 2592000000}));
 
   app.use(cookieParser());

@@ -13,6 +13,8 @@ var gulp = require('gulp')
   , rev = require('gulp-rev')
   , Promise = require("bluebird")
   ;
+
+var BUILD_PATH = './build/content';
 var myConfig = require('../config');
 var libs = require('../browserify-config');
 var DEV_MODE = myConfig.isDevMode();
@@ -50,7 +52,7 @@ function bundleAppJs(customObj, customLibConfig, destFile, resolve) {
         drop_debugger: true
       }
     })))
-    .pipe(gulp.dest('./public/build/js'))
+    .pipe(gulp.dest(BUILD_PATH + '/js'))
     .on('end', function() {
       resolve && resolve(true);
     });
@@ -97,7 +99,7 @@ function bundleLibJs(customLibs, destFile, resolve) {
     .pipe(gulpif(!DEV_MODE, buffer()))
     .pipe(gulpif(!DEV_MODE, uglify()))
     // Start piping stream to tasks!
-    .pipe(gulp.dest('./public/build/js'))
+    .pipe(gulp.dest(BUILD_PATH + '/js'))
     .on('end', function() {
       resolve && resolve(true);
     });

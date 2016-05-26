@@ -6,11 +6,11 @@ var gulp = require('gulp')
   , sourcemaps = require('gulp-sourcemaps')
   ;
 
+var BUILD_PATH = './build/content';
 var myConfig = require('../config');
 var DEV_MODE = myConfig.isDevMode();
 
 gulp.task('less', ['preTask'], function () {
-  var cp = 'public/build/css';
   return gulp.src(['public/less/**/*.less'])
     .pipe(gulpif(DEV_MODE, sourcemaps.init()))
     .pipe(less())
@@ -19,7 +19,7 @@ gulp.task('less', ['preTask'], function () {
     .pipe(gulpif(!DEV_MODE, minifycss({
       keepSpecialComments: 1
     })))
-    .pipe(gulp.dest(cp))
+    .pipe(gulp.dest(BUILD_PATH + '/css'))
     ;
 });
 gulp.task('less.watch', ['less'], function () {

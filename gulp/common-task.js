@@ -8,10 +8,10 @@ var gulp = require('gulp')
   , rev = require('gulp-rev')
   , revReplace = require('gulp-rev-replace')
   ;
-var buildPath = 'public/build/';
+var BUILD_PATH = './build/content';
 
 gulp.task('clean', function () {
-  return gulp.src(['public/build/*'], {
+  return gulp.src(['build/*'], {
       read: false
     })
     .pipe(vp(del));
@@ -19,12 +19,11 @@ gulp.task('clean', function () {
 
 gulp.task('preTask', function () {
   return new Promise(function (resole) {
-    var buildPath = './public/build';
     try {
-      fs.statSync(buildPath);
+      fs.statSync('build');
     } catch (e) {
       gutil.log('Missing build dir, creating one...');
-      fs.mkdirSync(buildPath);
+      fs.mkdirSync('build');
       gutil.log('"build" dir created.');
     }
     resole(true);
@@ -33,31 +32,31 @@ gulp.task('preTask', function () {
 
 gulp.task('revision', function () {
   return gulp.src([
-      './public/build/**/*.css',
-      './public/build/**/*.js',
-      './public/build/**/*.json',
-      './public/build/**/*.@(png|jpg|jpeg|gif|ico|webp)',
-      '!./public/build/lib/**/*'
+      BUILD_PATH + '/**/*.css',
+      BUILD_PATH + '/**/*.js',
+      BUILD_PATH + '/**/*.json',
+      BUILD_PATH + '/**/*.@(png|jpg|jpeg|gif|ico|webp)',
+      '!' + BUILD_PATH + '/lib/**/*'
     ])
     // .pipe(gulp.dest('./public/build'))
     .pipe(rev())
-    .pipe(gulp.dest('./public/build'))
+    .pipe(gulp.dest(BUILD_PATH))
     .pipe(rev.manifest())
-    .pipe(gulp.dest('./public/build'));
+    .pipe(gulp.dest(BUILD_PATH));
 });
 
 gulp.task('cssRevReplace', function () {
-  var manifest = gulp.src("./public/build/rev-manifest.json");
-  return gulp.src("./public/build/css/**/*.css")
+  var manifest = gulp.src(BUILD_PATH + "/rev-manifest.json");
+  return gulp.src(BUILD_PATH + "/css/**/*.css")
     .pipe(revReplace({manifest: manifest}))
-    .pipe(gulp.dest(buildPath+'/css'));
+    .pipe(gulp.dest(BUILD_PATH+'/css'));
 });
 
 gulp.task('htmlRevReplace', function () {
-  var manifest = gulp.src("./public/build/rev-manifest.json");
-  return gulp.src("./build/**/*.html")
+  var manifest = gulp.src(BUILD_PATH + "/rev-manifest.json");
+  return gulp.src("./build/views/**/*.html")
     .pipe(revReplace({manifest: manifest}))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('./build/views'));
 });
 
 gulp.task('rev', ['revision'], function () {

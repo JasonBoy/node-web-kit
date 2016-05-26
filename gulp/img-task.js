@@ -7,6 +7,6 @@ gulp.task('img', ['preTask'], function () {
     .pipe(imagemin({
       progressive: true
     }))
-    .pipe(gulp.dest('./public/build/img'));
+    .pipe(gulp.dest('./build/content/img'));
 });
 
