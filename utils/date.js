@@ -5,3 +5,5 @@ module.exports = {
     return dateFormat(new Date(), 'yyyy-mm-dd HH:MM:ss');
   }
 };
+
+console.log(module.exports.simpleDate())
