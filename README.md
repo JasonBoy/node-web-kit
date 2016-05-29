@@ -1,19 +1,18 @@
 # node-web-kit
 
 Node web starter kit for quick development,   
-which uses express as router,   
+which uses express as MVC,   
 and gulp as streaming build tool,  
-and less/sass for css, __the `css` task is for `scss` now__, change it to `less` for less files in related gulp files,    
+and less/sass for css, `css` task by default, which uses `scss`, change it to `less` for less files in related gulp files,  
 browserify to building js,
-also supports proxy for your app's restful api  with the help of `request` module,  
-and more will be added...
+also supports proxy for your app's restful api    
 
 ###Usage
 ```
 npm install node-web-kit
-cd node-web-kit
+cd xxx/node-web-kit //go to the project root
 npm install  
-gulp dev //for the first time 
+gulp dev //for the first time, you may need to install gulp globally
 
 ```
 
@@ -59,8 +58,7 @@ start/reload is only used when moduleName is "all", which will start all apps
 `npm run prod -- app 2`, which will start/reload app with 2 instances enabled    
 `npm run prod -- all 0 start`, which will start all apps with maximum(0 == maximum) instances,  
  "start" is only for the first time
-`npm run prod -- all`, which will reload all apps,  
-actually it just executes the `app.sh` file
+`npm run prod -- all`, which will reload all apps  
 or
 create your own script if needed
 
