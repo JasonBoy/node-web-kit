@@ -7,7 +7,7 @@
     "start": "node ./bin/www",
     "prod": "./deploy.sh",
     "build": "gulp",
-    "test": "mocha ./test --recursive"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -68,7 +68,9 @@
     "less": "^2.6.1",
     "mocha": "^2.5.3",
     "request-debug": "^0.2.0",
+    "rewire": "^2.5.1",
     "style-loader": "^0.13.1",
+    "supertest": "^1.2.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-paths": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",

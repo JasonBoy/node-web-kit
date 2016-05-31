@@ -1,6 +1,5 @@
 var assert = require('chai').assert;
-var dateUtils = require('../../utils/date');
-console.log('xxx');
+var dateUtils = require('../utils/date');
 describe('dateUtil', function() {
   describe('#simpleDate()', function() {
     var reg = /^[\d]{4}-[\d]{2}-[\d]{2}\s[\d]{2}:[\d]{2}:[\d]{2}$/;
