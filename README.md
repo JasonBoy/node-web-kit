@@ -1,5 +1,7 @@
 # node-web-kit
 
+[![Building Status](https://travis-ci.org/JasonBoy/node-web-kit.svg?branch=master)](https://travis-ci.org/JasonBoy/node-web-kit) [![Dependency Status](https://david-dm.org/JasonBoy/node-web-kit.svg)](https://david-dm.org/JasonBoy/node-web-kit)
+
 Node web starter kit for quick development,   
 which uses express as MVC,   
 and gulp as streaming build tool,  
