@@ -6,5 +6,9 @@
   "PROXY_PATH": "/api-proxy",
   "PROXY_PROTOCOL": "http:",
   "STATIC_ENDPOINT": "",
-  "ADMIN_NODE_PORT": 3001
+  "ADMIN_NODE_PORT": 3001,
+  "API_ENDPOINTS": {
+    "/prefix": "127.0.0.1:3001",
+    "/prefix2": "127.0.0.1:3002"
+  }
 }

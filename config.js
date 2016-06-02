@@ -59,6 +59,9 @@ module.exports = {
     //AKA, get CDN domain
     return getConfigProperty('STATIC_ENDPOINT');
   },
+  getApiEndPoints: function () {
+    return getConfigProperty('API_ENDPOINTS');
+  },
   getEnv: function(key) {
     return getConfigProperty(key);
   }

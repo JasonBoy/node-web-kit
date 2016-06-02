@@ -11,8 +11,10 @@ var cons = require('consolidate');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var compression = require('compression');
+var _ = require('lodash');
 
 var appConfig = require('./config');
+var apiEndPoints = appConfig.getApiEndPoints();
 
 var logger = require('./mw/logger').defaultLogger;
 var apiProxyRouter = require('./routes/proxy');
@@ -49,11 +51,16 @@ function init(moduleName, moduleLogger) {
   app.use(session({name: "sid", secret: 'node.web.'+ (moduleName ? moduleName + '.' : '') +'sid', saveUninitialized: true, resave: true}));
 
   //api proxy
-  if(appConfig.getProxyPath()) {
-    app.use(appConfig.getProxyPath(), apiProxyRouter);
-    logger.info('Node proxy[' + appConfig.getProxyAddress() + '] enabled for path: ' + appConfig.getProxyPath());
+  if(!_.isEmpty(apiEndPoints)) {
+    for(var prefix in apiEndPoints) {
+      if(apiEndPoints.hasOwnProperty(prefix)) {
+        var endPoint = apiEndPoints[prefix];
+        app.use(prefix, apiProxyRouter.handleApiRequests(endPoint));
+        logger.info('Node proxy[' + endPoint + '] enabled for path: ' + prefix);
+      }
+    }
   }
-
+  
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   return app;
