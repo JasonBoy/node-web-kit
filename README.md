@@ -25,8 +25,9 @@ other tasks: `gulp watch`, `gulp css`, `gulp js`, `gulp js.lib`, more in the `gu
 ###Logs  
 The logs will be put in `logs` folder
 
-###config.json.sample 
-This config file has couple configuration samples for your app, 
+###config.json.sample
+__[NOTICE]Add Multi API Endpoints support, `API_ENDPOINT` has changed to `API_ENDPOINTS`, and other related properties removed__
+This config file has couple configuration samples for your app,
 it will create create a `config.json` file while you using gulp or `npm start` automatically,
 or you can just copy that by yourself.  
 All the config can also be set in your environment variable, which has higher priority.
@@ -35,11 +36,12 @@ All the config can also be set in your environment variable, which has higher pr
 {
   "NODE_PORT": 3000, //server port
   "NODE_ENV": "development", //Node env, also could be development/dev, production/prod, add more as you wish
-  "API_ENDPOINT": "127.0.0.1", //your proxy api endpoint
   "NODE_PROXY": true, //if you need to enable the api proxy
-  "PROXY_PATH": "/api-proxy", //api proxy prefix, '/api/login' --> '/api-proxy/api/login' in your browser
-  "PROXY_PROTOCOL": "http:",  //http/https
   "STATIC_ENDPOINT": "", //host for static assets, need other coding
+  "API_ENDPOINTS": {
+    "/prefix": "http://localhost:3001", //: /prefix/api1/login --> http://localhost:3001/api1/login
+    "/prefix2": "http://localhost:3002"
+  }
 }
 
 ```
@@ -48,7 +50,7 @@ All the config can also be set in your environment variable, which has higher pr
 ### Template Engines
 __Default template engine is [nunjucks](https://github.com/mozilla/nunjucks)__,   
 Since we are using the [consolidate.js](https://github.com/tj/consolidate.js), you can use any template engine you want.
-   
+
 ###Production Mode
 
 __Make sure you set the `NODE_ENV=production` or set `NODE_ENV` to `prod` or `production` in `config.json`__  
