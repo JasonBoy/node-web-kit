@@ -11,9 +11,11 @@ var logger = require('../mw/logger').defaultLogger
   , appConfig = require('../config')
   ;
 
-if(appConfig.isDevMode()) {
-  request.debug = true;
-  //require('request-debug')(request);
+var debugLevel = appConfig.getProxyDebugLevel();
+
+if(debugLevel && debugLevel > 0) {
+  if(debugLevel >= 1) request.debug = true;
+  if(debugLevel >= 2) require('request-debug')(request);
 }
 
 /**

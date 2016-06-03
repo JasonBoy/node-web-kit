@@ -47,6 +47,9 @@ module.exports = {
   getApiEndPoints: function () {
     return getConfigProperty('API_ENDPOINTS');
   },
+  getProxyDebugLevel: function() {
+    return getConfigProperty('PROXY_DEBUG_LEVEL');
+  },
   getEnv: function(key) {
     return getConfigProperty(key);
   }

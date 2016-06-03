@@ -37,6 +37,8 @@ All the config can also be set in your environment variable, which has higher pr
   "NODE_PORT": 3000, //server port
   "NODE_ENV": "development", //Node env, also could be development/dev, production/prod, add more as you wish
   "NODE_PROXY": true, //if you need to enable the api proxy
+  "PROXY_DEBUG_LEVEL": 1, //`request` debug level,
+                          //1: only use `request.debug = true`, 2: also add `request-debug`, default: no debug info.
   "STATIC_ENDPOINT": "", //host for static assets, need other coding
   "API_ENDPOINTS": {
     "/prefix": "http://localhost:3001", //: /prefix/api1/login --> http://localhost:3001/api1/login
