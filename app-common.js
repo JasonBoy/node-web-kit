@@ -27,7 +27,7 @@ function init(moduleName, moduleLogger) {
   app.set('isProdMode', appConfig.isProdMode());
   app.set('isDevMode', appConfig.isDevMode());
   app.set('proxyEnabled', appConfig.isNodeProxyEnabled());
-  app.set('proxyPath', appConfig.getProxyPath());
+  app.set('proxyPaths', apiEndPoints);
 
   var viewsPath = appConfig.isDevMode() ? 'views' : 'build/views';
 
@@ -60,7 +60,7 @@ function init(moduleName, moduleLogger) {
       }
     }
   }
-  
+
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   return app;
