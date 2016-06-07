@@ -9,7 +9,7 @@ var generateOptions = apiProxy.__get__('getProxyOptions');
 var app = express();
 
 app.get('/proxy-options', function (req, res) {
-  var options = generateOptions(req, {
+  var options = generateOptions(req, '', {
     qs: req.query,
     headers: {
       'Test-Header': req.get('Test-Header')
