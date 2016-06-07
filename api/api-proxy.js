@@ -11,15 +11,24 @@ var logger = require('../mw/logger').defaultLogger
   , appConfig = require('../config')
   ;
 
-if(appConfig.isDevMode()) {
-  request.debug = true;
-  //require('request-debug')(request);
-}
-var proxyPath = appConfig.getProxyAddress();
+var debugLevel = appConfig.getProxyDebugLevel();
 
-exports.proxyRequest = function(req, res, noPromise, options) {
+if(debugLevel && debugLevel > 0) {
+  if(debugLevel >= 1) request.debug = true;
+  if(debugLevel >= 2) require('request-debug')(request);
+}
+
+/**
+ * Dispatch the api requests
+ * @param req
+ * @param res
+ * @param noPromise
+ * @param apiEndpoint
+ * @param options
+ */
+exports.proxyRequest = function(req, res, noPromise, apiEndpoint, options) {
   return new Promise(function (resolve, reject) {
-    var apiRequest = req.pipe(request(getProxyOptions(req, options), function(err, response, body) {
+    var apiRequest = req.pipe(request(getProxyOptions(req, apiEndpoint, options), function(err, response, body) {
       if(!noPromise) {
         if(err || response.statusCode != 200) {
           reject(response ? response : {statusCode: 500});
@@ -37,16 +46,16 @@ exports.proxyRequest = function(req, res, noPromise, options) {
   });
 };
 
-function getProxyOptions(req, options) {
+function getProxyOptions(req, apiEndPoint, options) {
   var defaultOptions = {
     url: req.url,
-    baseUrl: proxyPath,
+    baseUrl: apiEndPoint ? apiEndPoint : '',
     method: req.method,
     json: true,
     gzip: true
   };
   if(!_.isEmpty(options)) {
-    defaultOptions = _.extend({}, options, defaultOptions);
+    defaultOptions = _.extend(defaultOptions, options);
   }
   return defaultOptions;
 }

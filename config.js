@@ -29,9 +29,6 @@ module.exports = {
   getNodeEnv: function() {
     return getConfigProperty('NODE_ENV');
   },
-  getApiEndpoint: function() {
-    return getConfigProperty('API_ENDPOINT');
-  },
   isDevMode: function() {
     var env = getConfigProperty('NODE_ENV');
     return 'dev' === env || 'development' === env;
@@ -43,24 +40,17 @@ module.exports = {
   isNodeProxyEnabled: function() {
     return !!getConfigProperty('NODE_PROXY');
   },
-  getProxyPath: function() {
-    return getConfigProperty('PROXY_PATH') || '';
-  },
-  getProxyAddress: function() {
-    var apiEndpoint = this.getApiEndpoint()
-      , apiProtocol = this.getEnv('PROXY_PROTOCOL')
-      ;
-    if(apiProtocol) {
-      apiEndpoint = [apiProtocol, '//', apiEndpoint].join('');
-    }
-    return apiEndpoint;
-  },
   getStaticAssetsEndpoint: function() {
     //AKA, get CDN domain
     return getConfigProperty('STATIC_ENDPOINT');
+  },
+  getApiEndPoints: function () {
+    return getConfigProperty('API_ENDPOINTS');
+  },
+  getProxyDebugLevel: function() {
+    return getConfigProperty('PROXY_DEBUG_LEVEL');
   },
   getEnv: function(key) {
     return getConfigProperty(key);
   }
 };
-

@@ -29,7 +29,7 @@
       isProdMode: {{ settings.isProdMode }},
       isDevMode: {{ settings.isDevMode }},
       proxyEnabled: {{ settings.proxyEnabled }},
-      proxyPath: '{{ settings.proxyPath }}'
+      proxyPaths: [{% for key, endpoint in settings.proxyPaths %}'{{key}}'{% if not loop.last %},{% endif %}{% endfor %}]
     };
   </script>
 
