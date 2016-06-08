@@ -1,19 +1,17 @@
 var fs = require('fs');
-var httpLogger = require('morgan');
 var winston = require('winston');
+var winstonDaily = require('winston-daily-rotate-file');
+var expressWinston = require('express-winston');
 var dateUtil = require('../utils/date');
+var path = require("path");
+var config = require('../config');
+
 
 try {
   fs.statSync("./logs");
 } catch(e) {
   fs.mkdirSync("./logs");
 }
-
-//simple http logger
-httpLogger.token('simpleDate', function (req, res) {
-  return dateUtil.simpleDate();
-});
-var httpLoggerFormat = '[:simpleDate] :method :url :status :response-time ms';
 
 //default app logger
 var loggerDate = function() {
@@ -23,7 +21,8 @@ var loggerDate = function() {
 var myLogger = new (winston.Logger)({
   transports: getLoggerTransports('default-logger', 'app')
 });
-myLogger.httpLogger = httpLogger(httpLoggerFormat);
+
+myLogger.expressHttpLogger = getHttpExpressLogger();
 
 module.exports = myLogger;
 
@@ -60,5 +59,32 @@ function getLoggerTransports(name, filename) {
   }));
   //}
   return loggerTransports;
+}
+function getHttpExpressLogger() {
+  var requestLoggerTransports = [
+    new (winstonDaily)({
+      name: 'access-log',
+      filename: path.join('./logs', 'access.log'),
+      level: "info",
+      tailable: true
+    }),
+    new winston.transports.Console({
+      colorize: true,
+      timestamp: function () {
+        return ['[', dateUtil.simpleDate(), ']'].join('');
+      }
+    })
+  ];
+
+  var requestLoggerConfig = {
+    transports: requestLoggerTransports,
+    meta: false,
+    msg: '[{{req.ip}}] {{req.method}} {{req.originalUrl}} {{res.statusCode}} {{res.responseTime}}ms',
+    expressFormat: config.isDevMode(),
+    colorStatus: config.isDevMode(),
+    statusLevels: true,
+    level: config.isDevMode() ? 'debug' : 'info'
+  };
+  return expressWinston.logger(requestLoggerConfig);
 }
 

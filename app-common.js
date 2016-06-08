@@ -39,7 +39,7 @@ function init(moduleName, moduleLogger) {
     noCache: appConfig.isDevMode()
   });
 
-  app.use(require('./mw/logger').httpLogger);
+  app.use(require('./mw/logger').expressHttpLogger);
   //nginx may do this
   app.use(compression({}));
   // uncomment after placing your favicon in /public

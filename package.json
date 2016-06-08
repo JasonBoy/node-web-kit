@@ -36,12 +36,13 @@
     "dateformat": "^1.0.12",
     "express": "~4.13.1",
     "express-session": "^1.11.3",
+    "express-winston": "^1.4.1",
     "lodash": "^4.5.0",
-    "morgan": "~1.7.0",
     "nunjucks": "^2.4.2",
     "request": "^2.67.0",
     "serve-favicon": "~2.3.0",
-    "winston": "^2.1.1"
+    "winston": "^2.1.1",
+    "winston-daily-rotate-file": "^1.1.2"
   },
   "devDependencies": {
     "browserify": "^12.0.1",
