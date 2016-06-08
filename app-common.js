@@ -16,7 +16,7 @@ var _ = require('lodash');
 var appConfig = require('./config');
 var apiEndPoints = appConfig.getApiEndPoints();
 
-var logger = require('./mw/logger').defaultLogger;
+var logger = require('./mw/logger');
 var apiProxyRouter = require('./routes/proxy');
 
 

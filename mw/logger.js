@@ -14,12 +14,18 @@ httpLogger.token('simpleDate', function (req, res) {
   return dateUtil.simpleDate();
 });
 var httpLoggerFormat = '[:simpleDate] :method :url :status :response-time ms';
-exports.httpLogger = httpLogger(httpLoggerFormat);
 
 //default app logger
 var loggerDate = function() {
   return ['[', dateUtil.simpleDate() , ']'].join('');
 };
+
+var myLogger = new (winston.Logger)({
+  transports: getLoggerTransports('default-logger', 'app')
+});
+myLogger.httpLogger = httpLogger(httpLoggerFormat);
+
+module.exports = myLogger;
 
 function getLoggerTransports(name, filename) {
   var loggerTransports = [
@@ -45,17 +51,14 @@ function getLoggerTransports(name, filename) {
     })
   ];
   //if(config.isDevMode()) {
-    loggerTransports.push(new (winston.transports.Console)({
-      colorize: true,
-      timestamp: loggerDate,
-      handleExceptions: true,
-      humanReadableUnhandledException: true,
-      level: 'debug'
-    }));
+  loggerTransports.push(new (winston.transports.Console)({
+    colorize: true,
+    timestamp: loggerDate,
+    handleExceptions: true,
+    humanReadableUnhandledException: true,
+    level: 'debug'
+  }));
   //}
   return loggerTransports;
 }
 
-exports.defaultLogger = new (winston.Logger)({
-  transports: getLoggerTransports('default-logger', 'app')
-});

@@ -6,7 +6,7 @@
 
 var config = require('../config');
 var app = require('../app');
-var logger = require('../mw/logger').defaultLogger;
+var logger = require('../mw/logger');
 var http = require('http');
 
 /**

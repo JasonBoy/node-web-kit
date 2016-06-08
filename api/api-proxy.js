@@ -7,7 +7,7 @@ var request = require('request')
   , Promise = require('bluebird')
   ;
 
-var logger = require('../mw/logger').defaultLogger
+var logger = require('../mw/logger')
   , appConfig = require('../config')
   ;
 

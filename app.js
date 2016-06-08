@@ -4,7 +4,7 @@
 
 var myApp = require('./app-common');
 
-var app = myApp.init('myApp', require('./mw/logger').defaultLogger);
+var app = myApp.init('myApp', require('./mw/logger'));
 //add module specific routes
 app.get('/', function(req, res) {
   res.render("index");
