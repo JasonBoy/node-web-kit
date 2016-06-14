@@ -2,7 +2,7 @@
 
 [![Building Status](https://travis-ci.org/JasonBoy/node-web-kit.svg?branch=master)](https://travis-ci.org/JasonBoy/node-web-kit) [![Dependency Status](https://david-dm.org/JasonBoy/node-web-kit.svg)](https://david-dm.org/JasonBoy/node-web-kit)
 
-*Check out the old readme.md in old releases(tags 2.x)*  
+*Check out the old readme.md in old releases(tags 2.1.x)*  
 Node web starter kit for quick development,   
 which uses express as MVC,   
 and gulp as streaming build tool,  
@@ -12,10 +12,11 @@ also supports proxy for your app's restful api
 
 ###Usage
 ```
-npm install node-web-kit
-cd xxx/node-web-kit //go to the project root
+npm install node-web-kit  
+    or clone the project  
+cd ${path}/node-web-kit //go to the project root
 npm install  
-gulp dev //for the first time, you may need to install gulp globally
+gulp dev //using gulp directly, you may need to install gulp globally
 
 ```
 
@@ -27,19 +28,23 @@ other tasks: `gulp watch`, `gulp css`, `gulp js`, `gulp js.lib`, more in the `gu
 The logs will be put in `logs` folder
 
 ###config.json.sample
-__[NOTICE]Add Multi API Endpoints support, `API_ENDPOINT` has changed to `API_ENDPOINTS`, and other related properties removed__
+__[NOTICE]Add Multi API Endpoints support, `API_ENDPOINT` has changed to `API_ENDPOINTS`, and other related properties removed__  
 This config file has couple configuration samples for your app,
 it will create create a `config.json` file while you using gulp or `npm start` automatically,
 or you can just copy that by yourself.  
 All the config can also be set in your environment variable, which has higher priority.
 
-```
+```javascript
 {
-  "NODE_PORT": 3000, //server port
-  "NODE_ENV": "development", //Node env, also could be development/dev, production/prod, add more as you wish
-  "NODE_PROXY": true, //if you need to enable the api proxy
-  "PROXY_DEBUG_LEVEL": 1, //`request` debug level,
-                          //1: only use `request.debug = true`, 2: also add `request-debug`, default: no debug info.
+  //server port  
+  "NODE_PORT": 3000,   
+  //Node env, also could be development/dev, production/prod, add more as you wish  
+  "NODE_ENV": "development",
+  //if you need to enable the api proxy  
+  "NODE_PROXY": true, 
+  //`request` debug level,
+  //1: only use `request.debug = true`, 2: also add `request-debug`, default: no debug info.
+  "PROXY_DEBUG_LEVEL": 1, 
   "STATIC_ENDPOINT": "", //host for static assets, need other coding
   "API_ENDPOINTS": {
     "/prefix": "http://localhost:3001", //: /prefix/api1/login --> http://localhost:3001/api1/login
