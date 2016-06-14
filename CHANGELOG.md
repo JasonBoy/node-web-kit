@@ -1,3 +1,19 @@
+### 2.2.0
+
+- logger updates
+- add logger level config in config.json
+- add multi api/proxy endpoints
+
+### 2.1.3
+
+- remove unused html attributes
+
+### 2.1.2
+
+- add tests
+- add travis-ci
+- bug fixes
+
 ### 2.1.1
 
 - move all dist assets to `build` dir instead of putting the static assets in `public/build`
