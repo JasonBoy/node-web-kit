@@ -1,3 +1,7 @@
+### 2.2.1
+
+- express version update
+
 ### 2.2.0
 
 - logger updates
