@@ -1,3 +1,9 @@
+### 2.2.2
+
+- update nunjucks to prevent XSS
+- update express-winston to v2
+- add node v5, v6 to travis.yml
+
 ### 2.2.1
 
 - express version update
