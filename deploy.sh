@@ -1,9 +1,8 @@
 #!/bin/sh
 #Create by Jason <jasonlikenfs@gmail.com>
 #This is meant for production
-# > ./deploy.sh moduleName clusterNumber
+# > ./deploy.sh moduleName clusterNumber skipInstall
 ModuleName="app"
-AllModules="all"
 AppName=${ModuleName}
 #Get/Set module name from argv
 if [[ $# != 0 && $1 != "" ]]; then
@@ -41,8 +40,10 @@ fi
 #fi
 
 #installing npm modules
-echo installing npm modules...
-npm install
+if [[ $3 != "1" ]]; then
+  echo installing npm modules...
+  npm install
+fi
 
 #running gulp tasks
 echo running gulp tasks...
@@ -50,20 +51,10 @@ npm run build
 
 ClientScript="./bin/www"
 #For just make it to ClientScript
-AllModuleScript=${ClientScript}
 RunScript=${ClientScript}
 ClusterNumber=0
 if [[ $2 != "" ]]; then
   ClusterNumber=$2
-fi
-#start or reload all apps
-if [[ ${AppName} == ${AllModules} ]]; then
-  if [[ "start" == $3 ]]; then
-    pm2 start ${ClientScript} --no-vizion --name ${ModuleName} -i ${ClusterNumber}
-  else
-    pm2 reload all
-  fi
-  exit
 fi
 
 #check if app is running

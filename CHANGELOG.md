@@ -1,3 +1,10 @@
+### 2.2.3
+
+- update nunjucks to v3
+- simplify `deploy.sh`
+- couple of README update
+
+
 ### 2.2.2
 
 - update nunjucks to prevent XSS

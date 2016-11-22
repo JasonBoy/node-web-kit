@@ -1,6 +1,6 @@
 {
   "name": "node-web-kit",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Node web starter kit for quick development",
   "main": "app.js",
   "scripts": {
@@ -38,7 +38,7 @@
     "express-session": "^1.11.3",
     "express-winston": "^2.0.0",
     "lodash": "^4.5.0",
-    "nunjucks": "^2.5.2",
+    "nunjucks": "^3.0.0",
     "request": "^2.67.0",
     "serve-favicon": "~2.3.0",
     "winston": "^2.1.1",
