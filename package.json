@@ -1,6 +1,6 @@
 {
   "name": "node-web-kit",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "description": "Node web starter kit for quick development",
   "main": "app.js",
   "scripts": {
