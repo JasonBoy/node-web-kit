@@ -9,7 +9,7 @@ and less/sass for css, `css` task by default, which uses `scss`, change it to `l
 browserify to building js,
 also supports proxy for your app's restful api    
 
-###Usage
+### Usage
 ```
 npm install node-web-kit //or clone the project
 cd ${path}/node-web-kit //go to the project root
@@ -22,10 +22,10 @@ other tasks: `gulp watch`, `gulp css`, `gulp js`, `gulp js.lib`, more in the `gu
 
 `npm start` to start the server
 
-###Logs  
+### Logs  
 The logs will be put in `logs` folder
 
-###config.json.sample
+### config.json.sample
 __[NOTICE]Add Multi API Endpoints support, `API_ENDPOINT` has changed to `API_ENDPOINTS`, and other related properties removed__  
 This config file has couple configuration samples for your app,
 it will create create a `config.json` file while you using gulp or `npm start` automatically,
@@ -57,7 +57,7 @@ All the config can also be set in your environment variable, which has higher pr
 __Default template engine is [nunjucks](https://github.com/mozilla/nunjucks)__,   
 Since we are using the [consolidate.js](https://github.com/tj/consolidate.js), you can use any template engine you want.
 
-###Production Mode
+### Production Mode
 
 __Make sure you set the `NODE_ENV=production` or set `NODE_ENV` to `prod` or `production` in `config.json`__  
 And just run the `npm run prod ...` to simply start/reload the node server with PM2,  
